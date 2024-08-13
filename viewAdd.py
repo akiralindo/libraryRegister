@@ -29,21 +29,6 @@ class ViewAdd():
         labelTitulo = tk.Label(self.topFrame, width=20, bg="red", text='Cadastro Veicular:')
         labelTitulo.pack()
         self.topFrame.pack(side=tk.TOP, fill=tk.X)
-        
-    def opc(self):
-        container = tk.Frame(self.root)
-        container.pack()
-        labelFormato = tk.Label(container, width=20, text='Formato:')
-        labelFormato.grid(column=0, row=0, padx=5, pady=5)
-        self.gps = tk.BooleanVar()
-        self.compBordo = tk.BooleanVar()
-        chkBttn = tk.Checkbutton(container, text='GPS', width=20,
-                                 variable=self.gps, anchor=tk.W)
-        chkBttn.grid(column=1, row=0, padx=5, pady=5)
-
-        chkBttn = tk.Checkbutton(container, text='Comp Bordo', width=20,
-                                 variable=self.compBordo, anchor=tk.W)
-        chkBttn.grid(column=1, row=1, padx=5, pady=5)
     
     def insert(self):
         cont=tk.Frame(self.root)
