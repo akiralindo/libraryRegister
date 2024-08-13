@@ -64,8 +64,8 @@ class ViewAdd(tk.Frame):
     def bottomButtoms(self):
         cont = tk.Frame(self, bg=self['bg'])
         cont.pack(pady=(20, 0))
-        salvar_button = tk.Button(cont, text="Salvar", command=self.save_book, width=14, height=2, bg="green", fg="white")
+        salvar_button = tk.Button(cont, text="Salvar", command=self.save_book, width=14, height=2, bg="grey", fg="white")
         salvar_button.grid(padx=(0, 30), column=0, row=0)
-        cancelar_button = tk.Button(cont, text="Voltar", command=lambda: self.controller.show_frame("StartPage"), bg="red", width=14, height=2, fg="white")  # Mudar cor do botão
+        cancelar_button = tk.Button(cont, text="Voltar", command=lambda: self.controller.show_frame("StartPage"), bg="grey", width=14, height=2, fg="white")  # Mudar cor do botão
         cancelar_button.grid(column=1, row=0)
         
