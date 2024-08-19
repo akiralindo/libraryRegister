@@ -5,8 +5,8 @@ from viewAdd import ViewAdd
 import controller as ct
 
 class ViewMain(tk.Tk):
-    def __init__(self, *args, **kwargs): 
-        tk.Tk.__init__(self, *args, **kwargs)
+    def __init__(self): 
+        tk.Tk.__init__(self)
         self.controller = ct.Controller()
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
