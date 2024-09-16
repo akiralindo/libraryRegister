@@ -1,27 +1,28 @@
 import tkinter as tk
 from tkcalendar import DateEntry
+import controller as ct
 
 class ViewAdd(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent, bg="#e7e7e7")
+        super().__init__(parent, bg="#e7e7e7")
         self.controller = controller
         self.title("Biblioteca", 2, 0, "grey", "white", ('Arial', 24))
         self.title("Adicionar:", 1, 0, "#d3d3d3", "black", ('Arial', 15))
-        self.inicializar()
+        self.init()
 
-    def inicializar(self):
-        self.blankFrame(10)
-        self.insertBook()
-        self.blankFrame(30)
-        self.bottomButtoms()
-        self.blankFrame(20)
+    def init(self):
+        self.blank_frame(10)
+        self.insert_book()
+        self.blank_frame(30)
+        self.bottom_buttoms()
+        self.blank_frame(20)
 
     def title(self, texto, height, width, bg, fg, font):
-        titulo = tk.Label(self, text=texto, height=height, width=width, bg=bg, fg=fg, font=font)
-        titulo.pack(fill=tk.X)
+        title = tk.Label(self, text=texto, height=height, width=width, bg=bg, fg=fg, font=font)
+        title.pack(fill=tk.X)
 
-    def blankFrame(self, height):
-        blankFrame = tk.Frame(self, height=height, bg="#e7e7e7")
+    def blank_frame(self, h):
+        blankFrame = tk.Frame(self, height=h, bg="#e7e7e7")
         blankFrame.pack()
     
     def save_book(self):
@@ -30,11 +31,12 @@ class ViewAdd(tk.Frame):
         self.book_details['Gênero'] = self.genero_entry.get()
         self.book_details['Autor'] = self.autor_entry.get()
         self.book_details['Editora'] = self.editora_entry.get()
-        self.book_details['Data de Publicação'] = self.data_entry.get()
+        self.book_details['data_de_publicacao'] = self.data_entry.get()
         self.controller.saveBook(self.book_details)
-
-    def insertBook(self):
-        cont = tk.Frame(self,bg=self['bg'])
+        self.clear_entries() 
+        
+    def insert_book(self):
+        cont = tk.Frame(self, bg="#e7e7e7")
         cont.pack()
         labels = [
             "Nome:",
@@ -55,17 +57,21 @@ class ViewAdd(tk.Frame):
         self.editora_entry = self.entries["Editora:"]
         self.data_label = tk.Label(cont, text="Data de Publicação:", justify="left", bg="#e7e7e7")
         self.data_label.grid(sticky="W", padx=(5, 10), pady=(9, 0), column=1, row=6)
-        self.data_entry = DateEntry(cont, width=12, background="darkblue", foreground="white", borderwidth=2)
+        self.data_entry = DateEntry(cont, width=12, background="darkblue", foreground="white", borderwidth=2, date_pattern='yyyy-mm-dd')
         self.data_entry.grid(sticky="W", padx=(0, 10), pady=(9, 0), column=2, row=6)
         
-    def getDataEntryValue(self):
+    def clear_entries(self):
+        for entry in self.entries.values():
+            entry.delete(0, tk.END)
+        self.data_entry.set_date('')
+    
+    def get_data_entry_value(self):
         return self.data_entry.get()
     
-    def bottomButtoms(self):
-        cont = tk.Frame(self, bg=self['bg'])
+    def bottom_buttoms(self):
+        cont = tk.Frame(self, bg="#e7e7e7")
         cont.pack(pady=(20, 0))
-        salvar_button = tk.Button(cont, text="Salvar", command=self.save_book, width=14, height=2, bg="grey", fg="white")
-        salvar_button.grid(padx=(0, 30), column=0, row=0)
-        cancelar_button = tk.Button(cont, text="Voltar", command=lambda: self.controller.show_frame("StartPage"), bg="grey", width=14, height=2, fg="white")  # Mudar cor do botão
-        cancelar_button.grid(column=1, row=0)
-        
+        save_button = tk.Button(cont, text="Salvar", command=self.save_book, width=14, height=2, bg="grey", fg="white")
+        save_button.grid(padx=(0, 30), column=0, row=0)
+        cancel_button = tk.Button(cont, text="Voltar", command=lambda: self.controller.show_frame("StartPage"), bg="grey", width=14, height=2, fg="white")
+        cancel_button.grid(column=1, row=0)

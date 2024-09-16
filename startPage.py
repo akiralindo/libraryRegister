@@ -9,12 +9,14 @@ class StartPage(tk.Frame):
         self.title("Selecione:", 1, 0, "#d3d3d3", "black", ('Arial', 15))
 
         button1 = tk.Button(self, width=13, height=2, bg="#d3d3d3", font=("Arial",20), text="Adicionar Livro",
-                            command=lambda: controller.show_frame("ViewAdd"))
+                            command=lambda: self.controller.show_frame("ViewAdd"))
         button1.pack(pady=(30, 0))
         button2 = tk.Button(self, width=13, height=2, bg="#d3d3d3", font=("Arial",20), text="Ver Livros",
-                            command=lambda: controller.show_frame("ViewAdd"))
+                            command=lambda: self.controller.show_frame("ViewList"))
         button2.pack(pady=(15, 0))
         
     def title(self, texto, height, width, bg, fg, font):
-        titulo = tk.Label(self, text=texto, height=height, width=width, bg=bg, fg=fg, font=font)
-        titulo.pack(fill=tk.X)
+        title = tk.Label(self, text=texto, height=height, width=width, bg=bg, fg=fg, font=font)
+        title.pack(fill=tk.X)
+    
+    
