@@ -20,8 +20,8 @@ class ViewAdd(tk.Frame):
         titulo = tk.Label(self, text=texto, height=height, width=width, bg=bg, fg=fg, font=font)
         titulo.pack(fill=tk.X)
 
-    def blankFrame(self, h):
-        blankFrame = tk.Frame(self, height=h, bg="#e7e7e7")
+    def blankFrame(self, height):
+        blankFrame = tk.Frame(self, height=height, bg="#e7e7e7")
         blankFrame.pack()
     
     def save_book(self):
