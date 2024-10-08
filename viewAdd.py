@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkcalendar import DateEntry
-import controller as ct
 
 class ViewAdd(tk.Frame):
     def __init__(self, parent, controller):
